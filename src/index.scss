@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css?family=Karla:weight@400;700&display=swap");
+
+$font: "Karla", sans-serif;
+$primary-color: #000;
+$auto-margin: 0 auto;
+$container: 20px;
+$border-default: 2px solid #000;
+$uniform-height: 30px;
+$border-color: #f0f0f0;
+
+body {
+  font-family: $font;
+  color: $primary-color;
+}
+
+input:focus {
+  outline: none;
+}
+
+.container {
+  margin: $auto-margin;
+  position: relative;
+  top: 50px;
+  width: 30%;
+  box-shadow: 0 0 16px #d1d1d1;
+}
+
+.headerWrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+  margin: 10px 0;
+  display: flex;
+  border: none;
+  border-bottom: $border-default;
+  border-color: $border-color;
+}
+
+#input {
+  margin: 10px 0;
+  padding: 0 20px;
+  height: $uniform-height;
+  border-color: $border-color;
+}
+
+.headerText {
+  font-weight: 400;
+}
+
+.reload {
+  vertical-align: middle;
+  position: relative;
+  top: 20px;
+  height: 16px;
+  width: 14px;
+}
+
+.reload:hover {
+  animation: roll 1s ease;
+
+}
+
+@keyframes roll {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+#input {
+  margin: 10px 0;
+  padding: 0;
+  padding-left: 20px;
+  border: none;
+  border-bottom: $border-default;
+  border-color: $border-color;
+  width: 95%;
+  font-style: italic;
+}
+.todo-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.list {
+  border: none;
+  padding: 10px 20px;
+  width: 80%;
+  border-radius: 10px;
+}
+
+.wrapper,
+.wrapperCheck {
+  padding: 0 16px;
+  padding-right: 0;
+  border-bottom: $border-default;
+  border-color: $border-color;
+}
+
+.check {
+  position: relative;
+  top: 2px;
+  width: 12px;
+  height: 12px;
+}
+
+.clear {
+  height: $uniform-height;
+  text-decoration: none;
+  color: #000;
+  text-align: center;
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+.clear-link {
+  text-decoration: none;
+  color: #000;
+  margin: $auto-margin;
+  position: relative;
+  top: 5px;
+  user-select: none;
+}
+
+.clear:active {
+  background-color: #d1d0d0;
+}
