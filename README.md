@@ -14,7 +14,7 @@
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 \[ToDo List Application\] \<a name="ToDo List Application\>](#-todo-list-application-a-nametodo-list-application)
+- [📖 \[ToDo List Application\]](#-todo-list-application)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
@@ -33,8 +33,7 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [ToDo List Application] <a name="ToDo List Application></a>
-
+# 📖 [ToDo List Application]
 **[ToDo List Application]** is a project made with the use of HTML, CSS and JavaScript
 
 ## 🛠 Built With <a name="built-with"></a>
