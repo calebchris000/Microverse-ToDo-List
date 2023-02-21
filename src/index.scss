@@ -26,20 +26,12 @@ input:focus {
 }
 
 .headerWrapper {
-  display: flex;
   justify-content: space-between;
   padding: 0 16px;
   margin: 10px 0;
   display: flex;
   border: none;
   border-bottom: $border-default;
-  border-color: $border-color;
-}
-
-#input {
-  margin: 10px 0;
-  padding: 0 20px;
-  height: $uniform-height;
   border-color: $border-color;
 }
 
@@ -57,13 +49,13 @@ input:focus {
 
 .reload:hover {
   animation: roll 1s ease;
-
 }
 
 @keyframes roll {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(180deg);
   }
@@ -79,6 +71,7 @@ input:focus {
   width: 95%;
   font-style: italic;
 }
+
 .todo-list {
   display: flex;
   flex-direction: column;
