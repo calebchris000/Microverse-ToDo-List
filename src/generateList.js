@@ -62,6 +62,7 @@ const load = (object, inp) => {
     if (bool) {
       change(list, check, todo, wrapper, wrapperCheck, "line-through");
     } else {
+      //* Returns back to the wrapper element, so the wrapperCheck and wrapper is reversed to achieve that
       change(list, check, todo, wrapperCheck, wrapper, "none");
     }
   });
@@ -81,7 +82,7 @@ const load = (object, inp) => {
 
   // * I had this bug that prevents the restored item from being crossed (marked as completed)
   // * So this fixed it.
-  
+
   if (check.checked) {
     change(list, check, todo, wrapper, wrapperCheck, "line-through");
   }
