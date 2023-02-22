@@ -14,7 +14,7 @@ export default class SaveData {
     const parsed = JSON.parse(this.item);
 
     parsed.forEach((value) => {
-      input.value = value;
+      input.text = value;
     });
   }
 }
