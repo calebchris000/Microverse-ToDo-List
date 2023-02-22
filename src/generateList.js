@@ -1,21 +1,21 @@
-import SaveData from "./save.js";
+import SaveData from './save.js';
 
-const input = document.getElementById("input");
-const todo = document.querySelector(".todo-list");
+const input = document.getElementById('input');
+const todo = document.querySelector('.todo-list');
 
 const newSave = new SaveData();
 
 // * Changes the boolean property based on the checked input event
 const updateBoolean = (i) => {
-  let get = JSON.parse(localStorage.getItem("data"));
+  const get = JSON.parse(localStorage.getItem('data'));
 
   get.forEach((item) => {
-    if (item.index == i) {
+    if (item.index === i) {
       item.checked = !item.checked;
     }
   });
 
-  localStorage.setItem("data", JSON.stringify(get));
+  localStorage.setItem('data', JSON.stringify(get));
 };
 
 // * Initialization of index property
@@ -35,18 +35,18 @@ const change = (list, check, todo, wrapper, wrapperCheck, text) => {
 // * The todolist creation function itself
 const load = (object, inp) => {
   count += 1;
-  const wrapper = document.createElement("div");
-  const wrapperCheck = document.createElement("div");
-  const check = document.createElement("input");
-  const list = document.createElement("input");
+  const wrapper = document.createElement('div');
+  const wrapperCheck = document.createElement('div');
+  const check = document.createElement('input');
+  const list = document.createElement('input');
 
-  check.type = "checkbox";
+  check.type = 'checkbox';
 
-  wrapper.classList.add(`wrapper`);
+  wrapper.classList.add('wrapper');
   wrapper.classList.add(count);
-  wrapperCheck.classList.add("wrapperCheck");
-  list.classList.add("list");
-  check.classList.add("check");
+  wrapperCheck.classList.add('wrapperCheck');
+  list.classList.add('list');
+  check.classList.add('check');
   list.value = inp;
 
   check.checked = object.checked;
@@ -56,17 +56,17 @@ const load = (object, inp) => {
 
   // * On click, event triggered causes the element to move to the wrappercheck
 
-  check.addEventListener("change", () => {
+  check.addEventListener('change', () => {
     const bool = check.checked;
     updateBoolean(object.index);
     if (bool) {
-      change(list, check, todo, wrapper, wrapperCheck, "line-through");
+      change(list, check, todo, wrapper, wrapperCheck, 'line-through');
     } else {
-      //* Returns back to the wrapper element, so the wrapperCheck and wrapper is reversed to achieve that
-      change(list, check, todo, wrapperCheck, wrapper, "none");
+      //* Returns back to the wrapper element, so the
+      //* WrapperCheck and wrapper is reversed to achieve that
+      change(list, check, todo, wrapperCheck, wrapper, 'none');
     }
   });
-
 
   // * Saves data to the local storage
 
@@ -77,26 +77,25 @@ const load = (object, inp) => {
 
   todo.appendChild(wrapper);
 
-
-  input.value = "";
+  input.value = '';
 
   // * I had this bug that prevents the restored item from being crossed (marked as completed)
   // * So this fixed it.
 
   if (check.checked) {
-    change(list, check, todo, wrapper, wrapperCheck, "line-through");
+    change(list, check, todo, wrapper, wrapperCheck, 'line-through');
   }
 };
 
 // * Initialize the object property
 export const list = () => {
-  let dataText = {};
+  const dataText = {};
   load(dataText, input.value);
 };
 
 // * On reload
 const refresh = () => {
-  const elem = localStorage.getItem("data");
+  const elem = localStorage.getItem('data');
 
   const parsed = JSON.parse(elem);
 

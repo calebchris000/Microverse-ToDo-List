@@ -1,11 +1,10 @@
-
 export default class Todo {
-    constructor(){
-        this.books = []
-    }
+  constructor() {
+    this.books = [];
+  }
 
-    add(item) {
-        this.item = item
-        this.books.push(this.item)
-    }
+  add(item) {
+    this.item = item;
+    this.books.push(this.item);
+  }
 }
