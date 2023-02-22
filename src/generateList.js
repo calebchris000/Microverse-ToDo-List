@@ -13,14 +13,24 @@ const updateBoolean = (i) => {
     if (item.index == i) {
       item.checked = !item.checked;
     }
-    
   });
 
   localStorage.setItem("data", JSON.stringify(get));
 };
 
 // * Initialization of index property
+
 let count = 0;
+
+// * Changes the text decoration of the element based on the check state
+
+const change = (list, check, todo, wrapper, wrapperCheck, text) => {
+  list.style.textDecoration = text;
+  todo.removeChild(wrapper);
+  wrapperCheck.appendChild(check);
+  wrapperCheck.appendChild(list);
+  todo.prepend(wrapperCheck);
+};
 
 // * The todolist creation function itself
 const load = (object, inp) => {
@@ -45,25 +55,20 @@ const load = (object, inp) => {
   object.index = count;
 
   // * On click, event triggered causes the element to move to the wrappercheck
+
   check.addEventListener("change", () => {
     const bool = check.checked;
     updateBoolean(object.index);
     if (bool) {
-      list.style.textDecoration = "line-through";
-      todo.removeChild(wrapper);
-      wrapperCheck.appendChild(check);
-      wrapperCheck.appendChild(list);
-      todo.prepend(wrapperCheck);
+      change(list, check, todo, wrapper, wrapperCheck, "line-through");
     } else {
-      list.style.textDecoration = "none";
-      todo.removeChild(wrapperCheck);
-      wrapper.appendChild(check);
-      wrapper.appendChild(list);
-      todo.appendChild(wrapper);
+      change(list, check, todo, wrapperCheck, wrapper, "none");
     }
   });
 
+
   // * Saves data to the local storage
+
   newSave.add(object);
 
   wrapper.appendChild(check);
@@ -71,7 +76,15 @@ const load = (object, inp) => {
 
   todo.appendChild(wrapper);
 
+
   input.value = "";
+
+  // * I had this bug that prevents the restored item from being crossed (marked as completed)
+  // * So this fixed it.
+  
+  if (check.checked) {
+    change(list, check, todo, wrapper, wrapperCheck, "line-through");
+  }
 };
 
 // * Initialize the object property
