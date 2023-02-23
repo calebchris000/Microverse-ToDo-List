@@ -73,8 +73,6 @@ input:focus {
   font-style: italic;
 }
 
-
-
 .todo-list {
   display: flex;
   flex-direction: column;
@@ -87,7 +85,7 @@ input:focus {
 }
 
 .list:focus {
-  background-color: #fffEC3;
+  background-color: #fffec3;
 }
 
 .wrapper,
@@ -106,7 +104,6 @@ input:focus {
 .menu {
   width: 3px;
   user-select: none;
-  
 }
 
 .trashcan {
@@ -149,5 +146,5 @@ input:focus {
 }
 
 .hide {
-  display: none
+  display: none;
 }
