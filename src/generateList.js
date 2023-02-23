@@ -113,7 +113,6 @@ export const clearComplete = () => {
   wrapperChecks.forEach((item) => {
     item.remove();
   });
-  // wrapperChecks.length === 0 ?localStorage.clear():0
 
   newSave.array = [];
   const get = JSON.parse(localStorage.getItem('data'));
