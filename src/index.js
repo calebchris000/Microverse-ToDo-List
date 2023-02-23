@@ -2,7 +2,6 @@ import Sortable from 'sortablejs';
 import { generateElements } from './container.js';
 import { list } from './generateList.js';
 import { clearComplete } from './clear.js';
-// import { draggable } from "./draggable.js";
 
 import './index.scss';
 
