@@ -1,4 +1,4 @@
-import Sortable from 'sortablejs';
+import Sortable from './Sortable.js';
 import { generateElements } from './container.js';
 import { list } from './generateList.js';
 import { clearComplete } from './clear.js';
