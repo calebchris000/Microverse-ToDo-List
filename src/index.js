@@ -1,6 +1,6 @@
 import { generateElements } from './container.js';
 import { list } from './generateList.js';
-import { clearComplete } from './clear.js';
+import { clearComplete } from './generateList.js';
 import './index.scss';
 
 generateElements();
