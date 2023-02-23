@@ -1,12 +1,9 @@
-import Sortable from './Sortable.js';
 import { generateElements } from './container.js';
 import { list } from './generateList.js';
 import { clearComplete } from './clear.js';
-
 import './index.scss';
 
 generateElements();
-const items = document.querySelector('.todo-list');
 
 const input = document.getElementById('input');
 const clear = document.querySelector('.clear');
@@ -18,9 +15,3 @@ input.addEventListener('keydown', (event) => {
 });
 
 clear.addEventListener('click', clearComplete);
-
-const sortable = new Sortable(items, {
-  animation: 150,
-});
-
-sortable();

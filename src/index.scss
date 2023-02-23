@@ -36,7 +36,7 @@ input:focus {
 }
 
 .headerText {
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .reload {
@@ -65,7 +65,6 @@ input:focus {
   margin: 10px 0;
   padding: 0;
   padding-left: 20px;
-  padding-top: 20px;
   border: none;
   border-bottom: $border-default;
   border-color: $border-color;
@@ -80,12 +79,9 @@ input:focus {
 
 .list {
   border: none;
-  padding: 10px 30px;
+  padding: 10px 20px;
   width: 80%;
-}
-
-.list:focus {
-  background-color: #fffec3;
+  border-radius: 10px;
 }
 
 .wrapper,
@@ -94,29 +90,13 @@ input:focus {
   padding-right: 0;
   border-bottom: $border-default;
   border-color: $border-color;
-  position: relative;
-}
-
-.collectionMenu {
-  display: flex;
-}
-
-.menu {
-  width: 3px;
-  user-select: none;
-}
-
-.trashcan {
-  width: 16px;
-  position: relative;
-  left: -10px;
 }
 
 .check {
   position: relative;
-  top: 29px;
-  width: 14px;
-  height: 14px;
+  top: 2px;
+  width: 12px;
+  height: 12px;
 }
 
 .clear {
@@ -139,12 +119,4 @@ input:focus {
 
 .clear:active {
   background-color: #d1d0d0;
-}
-
-.red {
-  border: 2px solid red;
-}
-
-.hide {
-  display: none;
 }
