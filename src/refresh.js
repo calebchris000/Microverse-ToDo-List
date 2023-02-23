@@ -1,8 +1,8 @@
-import { load } from "./generateList.js";
+import { load } from './generateList.js';
 
 // * On reload
 const refresh = () => {
-  const elem = localStorage.getItem("data");
+  const elem = localStorage.getItem('data');
   const parsed = JSON.parse(elem);
 
   parsed.forEach((item) => {

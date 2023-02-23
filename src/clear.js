@@ -14,8 +14,6 @@ export const clearComplete = () => {
     const cleaned = get.filter((x) => x.checked !== true);
     newSave.add(...cleaned);
   });
-
-
 };
 
 export default clearComplete;

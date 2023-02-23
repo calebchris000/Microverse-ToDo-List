@@ -1,12 +1,12 @@
-import Sortable from "sortablejs";
+import Sortable from 'sortablejs';
 
-const items = document.querySelector(".todo-list");
+const items = document.querySelector('.todo-list');
 
-var draggable = new Sortable(items, {
+const draggable = new Sortable(items, {
   animation: 150,
-})
+});
 
-export default draggable
+export default draggable;
 // const allOf = document.querySelectorAll(".wrapper");
 
 // let dragged = null;

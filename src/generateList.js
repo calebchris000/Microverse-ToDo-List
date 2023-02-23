@@ -1,11 +1,10 @@
-import SaveData from "./save.js";
-import Menu from "./menu.svg";
-import menuItems from "./menuItems.js";
-import updateBoolean from "./updateBoolean.js";
-import refresh from "./refresh.js";
+import SaveData from './save.js';
+import Menu from './menu.svg';
+import updateBoolean from './updateBoolean.js';
+import Delete from './delete.svg';
 
-const input = document.getElementById("input");
-const todo = document.querySelector(".todo-list");
+const input = document.getElementById('input');
+const todo = document.querySelector('.todo-list');
 
 const newSave = new SaveData();
 
@@ -23,7 +22,7 @@ const change = (
   wrapperCheck,
   text,
   collectionMenu,
-  img
+  img,
 ) => {
   list.style.textDecoration = text;
   todo.removeChild(wrapper);
@@ -34,35 +33,33 @@ const change = (
   todo.prepend(wrapperCheck);
 };
 
-
-
 // * The todolist creation function itself
 export const load = (object, inp) => {
   count += 1;
-  const wrapper = document.createElement("div");
-  const wrapperCheck = document.createElement("div");
-  const check = document.createElement("input");
+  const wrapper = document.createElement('div');
+  const wrapperCheck = document.createElement('div');
+  const check = document.createElement('input');
 
-  const collectionMenu = document.createElement("div");
+  const collectionMenu = document.createElement('div');
 
-  const list = document.createElement("input");
-  const img = document.createElement("img");
+  const list = document.createElement('input');
+  const img = document.createElement('img');
   img.src = Menu;
 
-  check.type = "checkbox";
+  check.type = 'checkbox';
 
-  wrapper.classList.add("wrapper");
+  wrapper.classList.add('wrapper');
   wrapper.classList.add(count);
-  wrapperCheck.classList.add("wrapperCheck");
+  wrapperCheck.classList.add('wrapperCheck');
 
-  collectionMenu.classList.add(".collectionMenu");
-  img.classList.add("menu");
-  list.classList.add("list");
-  check.classList.add("check");
+  collectionMenu.classList.add('.collectionMenu');
+  img.classList.add('menu');
+  list.classList.add('list');
+  check.classList.add('check');
 
-  wrapper.setAttribute("draggable", true);
-  list.setAttribute("draggable", false);
-  check.setAttribute("draggable", false);
+  wrapper.setAttribute('draggable', true);
+  list.setAttribute('draggable', false);
+  check.setAttribute('draggable', false);
 
   list.value = inp;
   list.disabled = true;
@@ -71,13 +68,32 @@ export const load = (object, inp) => {
   object.checked = check.checked;
   object.index = count;
 
-  img.addEventListener("click", () =>
-    menuItems(list, img, collectionMenu, count)
-  );
+  img.addEventListener('click', () => {
+    list.disabled = !list.disabled;
+
+    const trashCan = document.createElement('img');
+    trashCan.classList.add('trashcan');
+    trashCan.src = Delete;
+    collectionMenu.removeChild(img);
+    collectionMenu.appendChild(trashCan);
+
+    trashCan.addEventListener('click', () => {
+      const data = JSON.parse(localStorage.getItem('data'));
+
+      const filtered = data.filter((x) => x.index !== count);
+      todo.innerHTML = '';
+      filtered.forEach((item) => {
+        /* eslint */
+        load(item, item.text);
+      });
+
+      localStorage.setItem('data', JSON.stringify(filtered));
+    });
+  });
 
   // * On click, event triggered causes the element to move to the wrappercheck
 
-  check.addEventListener("change", () => {
+  check.addEventListener('change', () => {
     const bool = check.checked;
     updateBoolean(object.index);
     if (bool) {
@@ -87,9 +103,9 @@ export const load = (object, inp) => {
         todo,
         wrapper,
         wrapperCheck,
-        "line-through",
+        'line-through',
         collectionMenu,
-        img
+        img,
       );
     } else {
       //* Returns back to the wrapper element, so the
@@ -100,9 +116,9 @@ export const load = (object, inp) => {
         todo,
         wrapperCheck,
         wrapper,
-        "none",
+        'none',
         collectionMenu,
-        img
+        img,
       );
     }
   });
@@ -117,13 +133,13 @@ export const load = (object, inp) => {
 
   todo.appendChild(wrapper);
 
-  input.value = "";
+  input.value = '';
 
   // * I had this bug that prevents the restored item from being crossed (marked as completed)
   // * So this fixed it.
 
   if (check.checked || object.checked) {
-    change(list, check, todo, wrapperCheck, wrapper, "line-through");
+    change(list, check, todo, wrapperCheck, wrapper, 'line-through');
   }
 };
 
@@ -133,7 +149,14 @@ export const list = () => {
   load(dataText, input.value);
 };
 
+const refresh = () => {
+  const elem = localStorage.getItem('data');
+  const parsed = JSON.parse(elem);
 
+  parsed.forEach((item) => {
+    load(item, item.text);
+  });
+};
 
 window.onload = refresh;
 
