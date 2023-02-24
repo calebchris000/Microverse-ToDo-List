@@ -98,12 +98,30 @@ const refresh = () => {
   const elem = localStorage.getItem('data');
 
   const parsed = JSON.parse(elem);
+  localStorage.clear();
 
-  parsed.forEach((item) => {
-    load(item, item.text);
+  if (parsed !== null) {
+    parsed.forEach((item) => {
+      load(item, item.text);
+    });
+  }
+};
+
+export const clearComplete = () => {
+  const wrapperChecks = todo.querySelectorAll('.wrapperCheck');
+
+  wrapperChecks.forEach((item) => {
+    item.remove();
+  });
+
+  newSave.array = [];
+  const get = JSON.parse(localStorage.getItem('data'));
+  localStorage.clear();
+  const cleaned = get.filter((x) => x.checked !== true);
+
+  cleaned.forEach((item) => {
+    newSave.add(item);
   });
 };
 
 window.onload = refresh;
-
-export default list;
