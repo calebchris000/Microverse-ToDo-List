@@ -1,6 +1,7 @@
 /* eslint-disable */
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
+const webpack = require('webpack')
 
 module.exports = {
   entry: { index: path.resolve(__dirname, "src", "index.js") },
@@ -12,6 +13,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src", "index.html"),
     }),
+    new webpack.ProvidePlugin({
+      dragula: 'dragula'
+    })
   ],
 
   module: {
